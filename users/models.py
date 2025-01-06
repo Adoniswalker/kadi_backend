@@ -15,8 +15,6 @@ class CustomUserManager(BaseUserManager):
                 raise ValidationError(f"The phone number {phone_number} is already in use.")
         else:
             phone_number = None  # handle blank
-        # if not phone_number:
-        #     raise ValueError("The Phone Number field must be set")
         email = self.normalize_email(email)
         user = self.model(email=email, username=email, phone_number=phone_number, **extra_fields)
         user.set_password(password)

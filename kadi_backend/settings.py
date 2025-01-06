@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'corsheaders',
     'users',
     'rest_framework',
@@ -91,18 +92,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-{
-    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-},
-{
-    'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-},
-{
-    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-},
-{
-    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 # Internationalization
@@ -124,8 +125,8 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 CORS_ALLOWED_ORIGINS = [
-"http://127.0.0.1:3000",  # Frontend URL (Next.js)
-"http://localhost:3000",  # If you're using localhost
+    "http://127.0.0.1:3000",  # Frontend URL (Next.js)
+    "http://localhost:3000",  # If you're using localhost
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -134,10 +135,11 @@ AUTH_USER_MODEL = 'users.CustomUser'  # Use a custom user model
 LOGIN_REDIRECT_URL = '/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 EST_FRAMEWORK = {
-'DEFAULT_AUTHENTICATION_CLASSES': [
-    'rest_framework.authentication.TokenAuthentication',
-],
-'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.IsAuthenticated',
-],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
+ASGI_APPLICATION = 'myproject.asgi.application'
