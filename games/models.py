@@ -6,13 +6,14 @@ from users.models import CustomUser
 
 class Game(models.Model):
     status_choices = [
+        ('initiated', 'initiated'),
         ('active', 'Active'),
         ('completed', 'Completed'),
     ]
 
     id = models.AutoField(primary_key=True)
     status = models.CharField(max_length=50, choices=status_choices,
-                              default='active')
+                              default='initiated')
     started_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -33,7 +34,7 @@ class Player(models.Model):
     user = models.ForeignKey(CustomUser, related_name='players',
                              on_delete=models.CASCADE)
     status = models.CharField(max_length=50, choices=status_choices,
-                              default='playing')
+                              default='waiting')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
